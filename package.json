@@ -4,7 +4,7 @@
   "description": "Bot foda do discord bem gostoso",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start" : "node index.js"
   },
   "author": "Guilherme Oliveira Casagrande",
   "license": "ISC"

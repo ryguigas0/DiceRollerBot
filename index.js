@@ -14,40 +14,34 @@ client.on('message', message => {
     switch (message.content) {
         case `${prefix}d20`:
             num = Math.trunc((Math.random() * 100) / 5)
-            console.log("d20: " + num)
-            message.channel.send(`Você tirou ${num} no d20`)
+            resposta(message, "d20", num, message.author)
             break;
         case `${prefix}d12`:
             num = Math.trunc((Math.random() * 60) / 5)
-            console.log("d12: " + num)
-            message.channel.send(`Você tirou ${num} no d12`)
+            resposta(message, "d12", num, message.author)
             break;
         case `${prefix}d8`:
             num = Math.trunc((Math.random() * 1000) / 125)
-            console.log("d8: " + num)
-            message.channel.send(`Você tirou ${num} no d8`)
+            resposta(message, "d8", num, message.author)
             break;
         case `${prefix}d6`:
             num = Math.trunc((Math.random() * 60) / 10)
-            console.log("d6: " + num)
-            message.channel.send(`Você tirou ${num} no d6`)
+            resposta(message, "d6", num, message.author)
             break;
         case `${prefix}d4`:
             num = Math.trunc((Math.random() * 100) / 25)
-            console.log("d4: " + num)
-            message.channel.send(`Você tirou ${num} no d4`)
+            resposta(message, "d4", num, message.author)
             break;
         case `${prefix}moeda`:
             num = Math.trunc((Math.random() * 100)) % 2
-            console.log("moeda: " + num)
             if (num == 1) {
-                message.channel.send(`Você tirou cara na moeda`)
+                resposta(message, "moeda", "cara", message.author)
             } else {
-                message.channel.send(`Você tirou coroa na moeda`)
+                resposta(message, "moeda", "coroa", message.author)
             }
             break;
         case `${prefix}help`:
-            message.channel.send(`Que foi porra? Que que você qué?`)
+            message.channel.send(`${message.author} que foi porra? Que que você qué? Meus comandos são esses:`)
             message.channel.send(`&d20 &d12 &d8 &d6 &d4 &moeda `)
             break;
         default:
@@ -55,5 +49,10 @@ client.on('message', message => {
             break;
     }
 });
+
+function resposta(message, dado, numero) {
+    console.log(message.author + " : " + dado + " : " + numero)
+    message.channel.send(`${message.author} você tirou ${numero} no(a) ${dado}`)
+}
 
 client.login(botconfig.token);
