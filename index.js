@@ -41,7 +41,7 @@ client.on('message', message => {
             }
             break;
         case `${prefix}help`:
-            message.channel.send(`${message.author} que foi porra? Que que você qué? Meus comandos são esses:`)
+            message.channel.send(`${message.author} que que você qué? Meus comandos são esses:`)
             message.channel.send(`&d20 &d12 &d8 &d6 &d4 &moeda `)
             break;
         default:
