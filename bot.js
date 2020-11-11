@@ -1,11 +1,9 @@
 const Discord = require('discord.js');
-const process = require("process")
-
-const botconfig = require("./bot-config.json")
+const { DISCORD_BOT_TOKEN } = require("./api-keys.json")
 
 const client = new Discord.Client();
 
-client.login(process.env.DISCORD_BOT_TOKEN);
+client.login(DISCORD_BOT_TOKEN);
 
 client.once('ready', () => {
     console.log('Pai tá on');
@@ -13,15 +11,15 @@ client.once('ready', () => {
 
 client.on('message', message => {
     let prefix = "&"
-    
+
     let command = message.content.split(" ")
 
-    if(!command[0].startsWith(prefix)) return
-    
+    if (!command[0].startsWith(prefix) || message.author.bot) return
+
     switch (command[0]) {
         case `${prefix}d`:
-            if (!isNaN(Number(command[1]))) 
-            resposta(message, "d20", rollDice(command[1]), message.author)
+            if (!isNaN(Number(command[1])))
+                resposta(message, "d" + command[1], rollDice(command[1]), message.author)
             break;
         case `${prefix}moeda`:
             let num = Math.trunc((Math.random() * 10)) % 2
@@ -32,6 +30,7 @@ client.on('message', message => {
             }
             break;
         case `${prefix}help`:
+            console.log(message.author.username + " : help" )
             message.channel.send(`${message.author} que que você qué? Meus comandos são esses:`)
             message.channel.send(`&d [numero] -> rola um dado com a quantidade de lados específicados`)
             message.channel.send(`&moeda -> joga uma moeda e diz se deu cara ou coroa`)

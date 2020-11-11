@@ -1,11 +1,17 @@
 {
   "name": "dice_roller_bot",
-  "version": "0.0.1",
-  "description": "Bot foda do discord bem gostoso",
-  "main": "index.js",
+  "version": "1.0.0",
+  "description": "A bot that can roll any kind of dice",
   "scripts": {
-    "start" : "node index.js"
+    "monbot": "nodemon bot.js",
+    "start": "node bot.js"
   },
   "author": "Guilherme Oliveira Casagrande",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^2.0.6"
+  },
+  "dependencies": {
+    "discord.js": "12.4.1"
+  }
 }
