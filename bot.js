@@ -3,8 +3,6 @@ const { DISCORD_BOT_TOKEN } = require("./api-keys.json")
 
 const client = new Discord.Client();
 
-client.login(DISCORD_BOT_TOKEN);
-
 client.once('ready', () => {
     console.log('Pai tá on');
 });
@@ -30,14 +28,14 @@ client.on('message', message => {
             }
             break;
         case `${prefix}help`:
-            console.log(message.author.username + " : help" )
+            console.log(message.author.username + " : help")
             message.channel.send(`${message.author} que que você qué? Meus comandos são esses:`)
             message.channel.send(`&d [numero] -> rola um dado com a quantidade de lados específicados`)
             message.channel.send(`&moeda -> joga uma moeda e diz se deu cara ou coroa`)
             break;
         /* default:
-            //message.channel.send("Tá achando que aqui é a casa da mãe Joana?? QUEM GANHA DINHEIRO NA CAMA É PUTAAAAAAAAAAA")
-            break; */
+        //message.channel.send("Tá achando que aqui é a casa da mãe Joana?? QUEM GANHA DINHEIRO NA CAMA É PUTAAAAAAAAAAA")
+        break; */
     }
 });
 
@@ -49,3 +47,5 @@ function resposta(message, dado, numero) {
     console.log(message.author.username + " : " + dado + " : " + numero)
     message.channel.send(`${message.author} você tirou ${numero} no(a) ${dado}`)
 }
+
+client.login(DISCORD_BOT_TOKEN);
