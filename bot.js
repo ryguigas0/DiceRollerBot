@@ -1,5 +1,5 @@
 const Discord = require('discord.js');
-const { DISCORD_BOT_TOKEN } = require("./discord_key.json")
+const DISCORD_BOT_TOKEN = process.env.DISCORD_BOT_TOKEN
 
 const client = new Discord.Client();
 
@@ -31,12 +31,12 @@ client.on('message', message => {
 });
 
 function rollDice(sides) {
-    return Math.trunc((Math.random() * sides))
+    return Math.trunc((Math.random() * sides) + 1)
 }
 
 function resposta(message, dado, numero) {
-    console.log(message.author.username + " : " + dado + " : " + numero)
     message.channel.send(`${message.author} você tirou ${numero} no(a) ${dado}`)
+    console.log(message.author.username + " : " + dado + " : " + numero)
 }
 
 client.login(DISCORD_BOT_TOKEN);
